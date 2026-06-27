@@ -1,0 +1,172 @@
+/* ═══════════════════════════════════════════════════════════
+   SKILLS SECTION
+   ═══════════════════════════════════════════════════════════ */
+
+:host {
+  display: block;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+/* ── Grid Layout ──────────────────────────────────────────── */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ── Skill Card ───────────────────────────────────────────── */
+
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  cursor: default;
+  /* Hidden by default — animated in by CSS when .revealed is added */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: background var(--transition-smooth),
+              border-color var(--transition-smooth),
+              box-shadow var(--transition-smooth);
+}
+
+.skill-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--card-color, var(--border-accent));
+  box-shadow: 0 0 30px color-mix(in srgb, var(--card-color, #4f6df5) 20%, transparent),
+              0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+/* ── Colored Left Border ──────────────────────────────────── */
+
+.card-border-accent {
+  width: 4px;
+  flex-shrink: 0;
+  border-radius: 4px 0 0 4px;
+  transition: width var(--transition-smooth);
+}
+
+.skill-card:hover .card-border-accent {
+  width: 5px;
+}
+
+/* ── Card Content ─────────────────────────────────────────── */
+
+.skill-card-content {
+  padding: 28px 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+/* ── Skill Header ─────────────────────────────────────────── */
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.skill-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.skill-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* ── Skills List ──────────────────────────────────────────── */
+
+.skill-list {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  letter-spacing: 0.2px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REVEAL ANIMATIONS
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes revealSkillCard {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* When section has .revealed, animate each card with its own delay */
+section.revealed .skill-card {
+  animation: revealSkillCard 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: var(--card-delay, 0s);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .skill-card-content {
+    padding: 24px 24px 24px 20px;
+  }
+
+  .skill-title {
+    font-size: 1.05rem;
+  }
+
+  .skill-list {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skill-icon {
+    font-size: 1.4rem;
+  }
+
+  .skill-title {
+    font-size: 1rem;
+  }
+
+  .skill-card-content {
+    padding: 22px 20px 22px 18px;
+  }
+}

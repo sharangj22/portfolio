@@ -1,0 +1,211 @@
+/* ═══════════════════════════════════════════════════════════
+   CONTACT SECTION
+   ═══════════════════════════════════════════════════════════ */
+
+.contact-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient orb decorations */
+.contact-orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-primary);
+  top: -10%;
+  right: -150px;
+}
+
+.contact-orb-2 {
+  width: 350px;
+  height: 350px;
+  background: var(--accent-secondary);
+  bottom: 5%;
+  left: -120px;
+}
+
+.contact-orb-3 {
+  width: 250px;
+  height: 250px;
+  background: #7b61ff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+}
+
+/* Section header */
+.section-header {
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT CARDS GRID
+   ═══════════════════════════════════════════════════════════ */
+
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-card {
+  text-align: center;
+  padding: 40px 28px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+a.contact-card {
+  cursor: pointer;
+}
+
+/* Glow effect on hover */
+.contact-card-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(79, 109, 245, 0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-card:hover .contact-card-glow {
+  opacity: 1;
+}
+
+/* Card icon */
+.contact-card-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  border-radius: var(--radius-md);
+  background: rgba(79, 109, 245, 0.1);
+  border: 1px solid rgba(79, 109, 245, 0.2);
+  color: var(--accent-primary);
+  transition: all var(--transition-smooth);
+  position: relative;
+  z-index: 1;
+}
+
+.contact-card:hover .contact-card-icon {
+  background: rgba(79, 109, 245, 0.2);
+  border-color: var(--accent-primary);
+  transform: translateY(-4px);
+  color: var(--accent-secondary);
+}
+
+/* Card text */
+.contact-card-label {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-card-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 1;
+  word-break: break-word;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CTA AREA
+   ═══════════════════════════════════════════════════════════ */
+
+.contact-cta {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-lg {
+  padding: 18px 48px;
+  font-size: 1.05rem;
+  border-radius: var(--radius-xl);
+}
+
+/* Social links */
+.contact-social-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 40px;
+}
+
+.social-link {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all var(--transition-smooth);
+}
+
+.social-link:hover {
+  background: rgba(79, 109, 245, 0.15);
+  border-color: var(--accent-primary);
+  color: var(--accent-secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(79, 109, 245, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-card {
+    padding: 32px 24px;
+  }
+
+  .btn-lg {
+    padding: 16px 36px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .contact-cards-grid {
+    margin-bottom: 40px;
+  }
+}

@@ -1,0 +1,335 @@
+/* ═══════════════════════════════════════════════════════════
+   EXPERIENCE SECTION
+   ═══════════════════════════════════════════════════════════ */
+
+.experience-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.orb-experience {
+  width: 600px;
+  height: 600px;
+  background: var(--accent-primary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TIMELINE STRUCTURE
+   ═══════════════════════════════════════════════════════════ */
+
+.timeline {
+  position: relative;
+  margin-top: 64px;
+  padding: 20px 0;
+}
+
+/* Glowing Vertical Line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent-gradient);
+  transform: translateX(-50%);
+  border-radius: 3px;
+  box-shadow:
+    0 0 10px rgba(79, 109, 245, 0.4),
+    0 0 30px rgba(79, 109, 245, 0.2),
+    0 0 60px rgba(0, 212, 255, 0.1);
+  animation: linePulse 3s ease-in-out infinite;
+}
+
+@keyframes linePulse {
+  0%, 100% {
+    box-shadow:
+      0 0 10px rgba(79, 109, 245, 0.4),
+      0 0 30px rgba(79, 109, 245, 0.2),
+      0 0 60px rgba(0, 212, 255, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(79, 109, 245, 0.6),
+      0 0 45px rgba(79, 109, 245, 0.3),
+      0 0 80px rgba(0, 212, 255, 0.15);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TIMELINE ITEM
+   ═══════════════════════════════════════════════════════════ */
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 64px;
+  width: 50%;
+  padding-right: 60px;
+}
+
+/* Right-aligned items */
+.timeline-item.item-right {
+  margin-left: 50%;
+  padding-right: 0;
+  padding-left: 60px;
+  flex-direction: row-reverse;
+}
+
+.timeline-item.item-right .timeline-card {
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TIMELINE DOT
+   ═══════════════════════════════════════════════════════════ */
+
+.timeline-dot {
+  position: absolute;
+  right: -9px;
+  top: 24px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.timeline-item.item-right .timeline-dot {
+  right: auto;
+  left: -9px;
+}
+
+.dot-core {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 12px rgba(79, 109, 245, 0.6);
+}
+
+.dot-ring {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(79, 109, 245, 0.3);
+  animation: dotPulseRing 2.5s ease-out infinite;
+}
+
+@keyframes dotPulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TIMELINE CARD
+   ═══════════════════════════════════════════════════════════ */
+
+.timeline-card {
+  flex: 1;
+  position: relative;
+}
+
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: 3px 3px 0 0;
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.timeline-card:hover::before {
+  opacity: 1;
+}
+
+/* Card Header */
+.card-header {
+  margin-bottom: 20px;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.card-period {
+  display: inline-block;
+  padding: 4px 14px;
+  background: rgba(79, 109, 245, 0.12);
+  border: 1px solid rgba(79, 109, 245, 0.25);
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  letter-spacing: 0.5px;
+}
+
+.card-location {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.card-location svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.card-role {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.card-company {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+}
+
+/* Card Bullets */
+.card-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-bullets li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.card-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  box-shadow: 0 0 8px rgba(79, 109, 245, 0.4);
+}
+
+/* Card Tags */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .timeline-line {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item.item-right {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 60px;
+    padding-right: 0;
+    flex-direction: row;
+  }
+
+  .timeline-item.item-right .timeline-card {
+    text-align: left;
+  }
+
+  .timeline-dot,
+  .timeline-item.item-right .timeline-dot {
+    left: 11px;
+    right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    margin-top: 40px;
+  }
+
+  .timeline-line {
+    left: 16px;
+  }
+
+  .timeline-item,
+  .timeline-item.item-right {
+    padding-left: 48px;
+    margin-bottom: 40px;
+  }
+
+  .timeline-dot,
+  .timeline-item.item-right .timeline-dot {
+    left: 7px;
+  }
+
+  .timeline-card {
+    padding: 24px;
+  }
+
+  .card-role {
+    font-size: 1.1rem;
+  }
+
+  .card-bullets li {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item,
+  .timeline-item.item-right {
+    padding-left: 40px;
+  }
+
+  .timeline-card {
+    padding: 20px;
+  }
+
+  .card-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .card-role {
+    font-size: 1rem;
+  }
+}

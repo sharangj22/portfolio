@@ -1,0 +1,48 @@
+<section id="projects" class="section" #projectsSection>
+  <!-- Decorative Gradient Orb -->
+  <div class="bg-gradient-orb projects-orb"></div>
+
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-label">PORTFOLIO</span>
+      <h2 class="section-title">Key Projects</h2>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of projects; track project.number) {
+        <div
+          class="glass-card project-card"
+          #projectCard
+        >
+          <!-- Project Number -->
+          <div class="project-number">{{ project.number }}</div>
+
+          <!-- Project Title -->
+          <h3 class="project-title">{{ project.title }}</h3>
+
+          <!-- Tech Line -->
+          <p class="project-tech-line">{{ project.techLine }}</p>
+
+          <!-- Bullet Points -->
+          <ul class="project-bullets">
+            @for (bullet of project.bullets; track bullet) {
+              <li>
+                <span class="bullet-icon">▹</span>
+                <span>{{ bullet }}</span>
+              </li>
+            }
+          </ul>
+
+          <!-- Tags Row -->
+          <div class="project-tags">
+            @for (tag of project.tags; track tag) {
+              <span class="tech-tag">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,56 @@
+<section id="experience" class="section experience-section" #experienceSection>
+  <!-- Background Orb -->
+  <div class="bg-gradient-orb orb-experience"></div>
+
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">CAREER PATH</span>
+      <h2 class="section-title">Professional Experience</h2>
+    </div>
+
+    <div class="timeline">
+      <!-- Glowing Vertical Line -->
+      <div class="timeline-line" #timelineLine></div>
+
+      @for (exp of experiences; track exp.company; let i = $index) {
+        <div class="timeline-item" [class.item-right]="i % 2 !== 0">
+          <!-- Timeline Dot -->
+          <div class="timeline-dot" #timelineDot>
+            <div class="dot-core"></div>
+            <div class="dot-ring"></div>
+          </div>
+
+          <!-- Card -->
+          <div class="timeline-card glass-card" #timelineCard>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-period">{{ exp.period }}</span>
+                <span class="card-location">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  {{ exp.location }}
+                </span>
+              </div>
+              <h3 class="card-role">{{ exp.role }}</h3>
+              <p class="card-company">{{ exp.company }}</p>
+            </div>
+
+            <ul class="card-bullets">
+              @for (bullet of exp.bullets; track bullet) {
+                <li>{{ bullet }}</li>
+              }
+            </ul>
+
+            <div class="card-tags">
+              @for (tag of exp.tags; track tag) {
+                <span class="tech-tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,35 @@
+<section id="skills" class="section" #skillsSection>
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="section-label">EXPERTISE</span>
+      <h2 class="section-title">Technical Skills</h2>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      @for (category of categories; track category.title; let i = $index) {
+        <div
+          class="glass-card skill-card"
+          [style.--card-color]="category.color"
+          [style.--card-delay]="(i * 0.1) + 's'"
+        >
+          <!-- Colored Left Border Accent -->
+          <div class="card-border-accent" [style.background]="category.color"></div>
+
+          <!-- Card Content -->
+          <div class="skill-card-content">
+            <!-- Icon & Title -->
+            <div class="skill-header">
+              <span class="skill-icon">{{ category.icon }}</span>
+              <h3 class="skill-title">{{ category.title }}</h3>
+            </div>
+
+            <!-- Skills List -->
+            <p class="skill-list">{{ category.skills.join(', ') }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

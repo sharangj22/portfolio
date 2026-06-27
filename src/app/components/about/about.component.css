@@ -1,0 +1,177 @@
+/* ═══════════════════════════════════════════════════════════
+   ABOUT SECTION
+   ═══════════════════════════════════════════════════════════ */
+
+.about-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Gradient Orbs */
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--accent-primary);
+  top: -100px;
+  right: -150px;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent-secondary);
+  bottom: -80px;
+  left: -120px;
+  opacity: 0.1;
+}
+
+/* Content Card */
+.about-content {
+  position: relative;
+  z-index: 1;
+  margin-top: 48px;
+}
+
+.about-summary {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  max-width: 800px;
+  letter-spacing: 0.02em;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   STATS ROW
+   ═══════════════════════════════════════════════════════════ */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 24px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  position: relative;
+  overflow: hidden;
+  /* Hidden by default — animated in by CSS when .revealed is added */
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: background var(--transition-smooth),
+              border-color var(--transition-smooth),
+              box-shadow var(--transition-smooth);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.stat-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REVEAL ANIMATIONS
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes revealStatCard {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* When section has .revealed, animate each card with its own delay */
+section.revealed .stat-card {
+  animation: revealStatCard 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--card-delay, 0s);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stat-card {
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .stat-number {
+    font-size: 2.2rem;
+  }
+
+  .about-summary {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-content {
+    margin-top: 32px;
+    padding: 24px;
+  }
+
+  .stat-number {
+    font-size: 1.8rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,51 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="navbar-inner">
+    <!-- Logo -->
+    <a class="navbar-logo" (click)="scrollTo('introduction')">
+      <span class="logo-monogram">SJ</span>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="navbar-links">
+      <li *ngFor="let link of navLinks">
+        <a
+          class="nav-link"
+          [class.active]="activeSection === link.target"
+          (click)="scrollTo(link.target)"
+        >
+          {{ link.label }}
+          <span class="nav-link-indicator"></span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile Hamburger -->
+    <button
+      class="hamburger"
+      [class.open]="isMobileMenuOpen"
+      (click)="toggleMobileMenu()"
+      aria-label="Toggle navigation"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <ul class="mobile-links">
+      <li *ngFor="let link of navLinks; let i = index">
+        <a
+          class="mobile-link"
+          [class.active]="activeSection === link.target"
+          (click)="scrollTo(link.target)"
+          [style.animation-delay]="(i * 0.06) + 's'"
+        >
+          <span class="mobile-link-number">0{{ i + 1 }}</span>
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
